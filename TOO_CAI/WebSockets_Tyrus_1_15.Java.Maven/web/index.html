@@ -1,0 +1,45 @@
+<!--
+    ************************************************************
+    |  Interface html ecrite par Dymko frédéric, Cazaux Axel   |
+    |  L3 informatique                                         |
+    |  Projet TOO/CAI                                          |
+    ************************************************************
+
+-->
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <title>WhoIs</title>
+        <meta charset="UTF-8" />
+        <meta name="author" content="Dymko Frédéric, Cazaux Axel" />
+        <meta name="description" content="WhoIs" />
+        <meta name="keywords" content="WhoIs" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="./img/favicon.ico"/>
+        <link rel="stylesheet" href="styles.css">
+        <script src="./WebSocket.js"></script>
+        <script src="./index.js"></script>
+    </head>
+    <body>
+        <!--
+        Please open the console to trace messages... 
+        <div align="center">
+            <img src="./img/@.png" height="60" width="200">
+        </div>
+        -->
+        <header>
+            <h1 id="title">WhoIs</h1>
+        </header>
+        <div id="inputField">
+            <h2>Get information of your domain name right now!</h2>
+            <div id="userInteractionField">
+                <input id="inputText" class="" placeholder="www.WhoIs.com" value="" /><button onclick="webSocketService.getDNSInformation()"><img
+                    src="./img/searchIcon.png" width="25px" height="25px" alt=""/></button>
+            </div>
+        </div>
+        <div id="replyField"></div>
+        <footer>
+
+        </footer>
+    </body>
+</html>
