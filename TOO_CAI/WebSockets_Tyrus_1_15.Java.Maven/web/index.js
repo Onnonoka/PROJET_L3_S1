@@ -9,6 +9,7 @@
 'use strict';
 
 window.onload = () => {
+
     // Tested with Tyrus 1.15 WebSockets Java library
     let service = new WebSocket("ws://localhost:1963/FranckBarbier/WebSockets_illustration");
     console.log(service);
@@ -84,7 +85,4 @@ window.onload = () => {
 
     // TODO Fonction d'affichage des informations
 
-    // TODO SELECT des dns a utiliser
-
-    // TODO SELECT des infos a récupérer
 };
