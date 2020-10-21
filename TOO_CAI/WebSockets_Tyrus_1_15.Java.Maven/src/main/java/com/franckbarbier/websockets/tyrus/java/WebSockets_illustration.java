@@ -1,3 +1,11 @@
+/*
+    ************************************************************
+    |  Serveur WebSocket ecrit par Dymko frédéric, Cazaux Axel |
+    |  L3 informatique                                         |
+    |  Projet TOO/CAI                                          |
+    ************************************************************
+*/
+
 package com.franckbarbier.websockets.tyrus.java;
 
 import org.json.JSONObject;
@@ -17,11 +25,13 @@ public class WebSockets_illustration {
 
         @javax.websocket.OnClose
         public void onClose(javax.websocket.Session session, javax.websocket.CloseReason close_reason) {
+            // TODO Faire une fermeture propre de la connexion
             System.out.println("onClose: " + close_reason.getReasonPhrase());
         }
 
         @javax.websocket.OnError
         public void onError(javax.websocket.Session session, Throwable throwable) {
+            // TODO Gestion des erreurs
             System.out.println("onError: " + throwable.getMessage());
         }
 
@@ -38,26 +48,18 @@ public class WebSockets_illustration {
             switch (JSONRequestMessage.getString("type")) {
                 case "Handshake":
 
-                    // Protocol de verification lors de la 1er communication
+                    // TODO Envois des suffixe url (con, fr, ...) au client
                     String RequestMessageData = JSONRequestMessage.getString("data");
                     JSONRequestMessage.put("data", RequestMessageData.substring(0, RequestMessageData.length() - 1));
                     JSONReplyMessage = JSONRequestMessage.toString();
 
                     break;
                 case "Request":
-                    // Recupère les info du jndi et renvois la reponse
+                    new JNDI_DNS(JSONRequestMessage.getString("data"));
 
-                    // TODO
+                    // TODO Recupère les info du jndi et envois au client les infos demander (A, AAAA, NS, ..., ALL)
 
                     break;
-                default:
-                    // Cas ou la request n'as pas bien été reçu
-                    // Demande de renvois
-                    // On vas peux etre pas le metre
-                    // Enfin on veras
-
-                    // TODO
-
             }
             session.getBasicRemote().sendText(JSONReplyMessage);
         }
@@ -66,6 +68,8 @@ public class WebSockets_illustration {
         public void onOpen(javax.websocket.Session session, javax.websocket.EndpointConfig ec) throws java.io.IOException {
             System.out.println("OnOpen... " + ec.getUserProperties().get("Author"));
             session.getBasicRemote().sendText("{ \"type\": \"Handshake\", \"data\": \"check\"}");
+
+            // TODO Recupération de tout les suffixe et envois au client
         }
         
         
