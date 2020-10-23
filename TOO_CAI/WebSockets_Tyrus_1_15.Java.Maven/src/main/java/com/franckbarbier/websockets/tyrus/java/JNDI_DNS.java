@@ -1,6 +1,6 @@
 /*
     ************************************************************
-    |  Class JNDI ecrit par Dymko frédéric, Cazaux Axel        |
+    |  Class JNDI_DNS ecrit par Dymko frédéric, Cazaux Axel    |
     |  L3 informatique                                         |
     |  Projet TOO/CAI                                          |
     ************************************************************
@@ -37,21 +37,23 @@ public class JNDI_DNS {
             // Set property for DirContext
             java.util.Properties DirContextEnv = new java.util.Properties();
             DirContextEnv.setProperty(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.dns.DnsContextFactory");
+            // DirContextEnv.setProperty(Context.PROVIDER_URL, dns); TODO A ajouter quand le js enveras le dns a utilisé
             DirContext dc = new InitialDirContext(DirContextEnv);
 
             // plus de resultat si l'url est sous la forme "google.com"
-            // Store DNS attributes for this.url
+            // Store DNS attributes for the url given as argument
             Attributes attributes = dc.getAttributes(url, new String[]{"A", "AAAA", "MX", "NS", "PTR", "SRV", "SOA", "TXT"}); // Stores the name server for a DNS entry...
             // Possible dns info => A, AAAA, CNAME, MX, NS, PTR, SRV, SOA, TXT (Il peux y en avoir plus mais je les ai pas trouvé)
             // CAA n'est pas reconue par DirContext
             if (attributes != null) {
 
-                NamingEnumeration attributesIDsEnum = attributes.getIDs();
+                // Store as HashMap the value of the Attribute for the url given as argument
+                NamingEnumeration<String> attributesIDsEnum = attributes.getIDs();
                 while(attributesIDsEnum.hasMore()) {
 
                     String ID = attributesIDsEnum.next().toString();
                     NamingEnumeration attributesValues = attributes.get(ID).getAll();
-                    List<String> attributeValues = new ArrayList();
+                    List<String> attributeValues = new ArrayList<>();
                     while(attributesValues.hasMore())
                         attributeValues.add(attributesValues.next().toString());
                     this.DNSAttributesValue.put(ID, attributeValues);
@@ -65,25 +67,9 @@ public class JNDI_DNS {
                 System.out.println(key + " " + value);
             }
             */
-
-            /*
-            if (attributes != null) {
-                NamingEnumeration ne = attributes.get("MX").getAll();
-                while (ne.hasMoreElements()) {
-                    System.out.println("[MX] entry: " + ne.next().toString());
-                }
-            }*/
         } catch (NamingException err) {
             System.err.println(err.getMessage() + ": " + err.getExplanation());
         }
-    }
-
-    /**
-     * Check if there is Domain name information
-     * @return boolean
-     */
-    public boolean isEmpty() {
-        return this.DNSAttributesValue.size() == 0;
     }
 
     /**
