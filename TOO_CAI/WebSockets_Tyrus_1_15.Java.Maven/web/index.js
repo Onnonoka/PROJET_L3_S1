@@ -65,7 +65,7 @@ window.onload = () => {
             if (inputValue.match(/[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)?/gi)) {
                 service.send(JSON.stringify({
                     type: "Request",
-                    value: inputValue
+                    data: inputValue
                 }));
                 console.log("Request Send to the WebSocketServer");
             } else {
@@ -75,7 +75,8 @@ window.onload = () => {
     };
 
 
-    // Event listener for valid the input text field
+    // Event listener for the input text field
+    // TODO Ajouter la verification de la valeur de l'input (C'est c'est bien une url et que le suffixe est correct
     document.getElementById("button").addEventListener("click", service.getDNSInformation);
     document.getElementById("inputText").addEventListener("keypress", (event) => {
         console.log(event);

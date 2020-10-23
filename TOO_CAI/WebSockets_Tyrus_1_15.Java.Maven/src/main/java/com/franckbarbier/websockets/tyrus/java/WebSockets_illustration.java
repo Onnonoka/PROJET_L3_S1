@@ -38,6 +38,13 @@ public class WebSockets_illustration {
         @OnMessage
         public void onMessage(Session session, String message) throws java.io.IOException {
 
+            // Version nul
+            /*
+            JsonReader jsonReader = Json.createReader(new StringReader(message));
+            JsonObject JSONRequestMessage = jsonReader.readObject();
+            jsonReader.close();
+            */
+
             JSONObject JSONRequestMessage = new JSONObject(message);
             String JSONReplyMessage = "";
 
@@ -71,7 +78,8 @@ public class WebSockets_illustration {
 
             // TODO Recupération de tout les suffixe et envois au client
         }
-        
+
+        // TODO Ajout des methodes d'envois d'information/reponce
         
     }
 
