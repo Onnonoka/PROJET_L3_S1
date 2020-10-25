@@ -10,6 +10,7 @@ package com.franckbarbier.websockets.tyrus.java;
 
 import org.json.JSONObject;
 
+import javax.naming.NamingException;
 import javax.websocket.OnMessage;
 import javax.websocket.Session;
 
@@ -45,42 +46,61 @@ public class WebSockets_illustration {
             jsonReader.close();
             */
 
-            JSONObject JSONRequestMessage = new JSONObject(message);
-            String JSONReplyMessage = "";
+            JSONObject JSONMessage = new JSONObject(message);
+            JSONObject JSONMessageData = JSONMessage.getJSONObject("data");
+            JSONObject JSONReplyMessage = new JSONObject();
 
             // Fonction de test a suppr une fois la partie fini
-            System.out.println("From JSONObject : " + JSONRequestMessage.get("type"));
+            System.out.println("From JSONObject : " + JSONMessage.get("type"));
             System.out.println("Message from JavaScript: " + message);
+            System.out.println("data : " +  JSONMessageData.toString());
 
-            switch (JSONRequestMessage.getString("type")) {
-                case "Handshake":
+            try {
+                switch (JSONMessage.getString("type")) {
+                    case "Handshake":
 
-                    // TODO Envois des suffixe url (con, fr, ...) au client
-                    String RequestMessageData = JSONRequestMessage.getString("data");
-                    JSONRequestMessage.put("data", RequestMessageData.substring(0, RequestMessageData.length() - 1));
-                    JSONReplyMessage = JSONRequestMessage.toString();
+                        // TODO Envois des suffixe url (con, fr, ...) au client
+                    /*String RequestMessageData = JSONMessage.getString("data");
+                    JSONMessage.put("data", RequestMessageData.substring(0, RequestMessageData.length() - 1));
+                    JSONReplyMessage = JSONMessage;*/
 
-                    break;
-                case "Request":
-                    new JNDI_DNS(JSONRequestMessage.getString("data"));
-
-                    // TODO Recupère les info du jndi et envois au client les infos demander (A, AAAA, NS, ..., ALL)
-
-                    break;
+                        break;
+                    case "Request":
+                        JNDI_DNS domainInfo = new JNDI_DNS(JSONMessageData.getString("url"), JSONMessageData.getString("dns"));
+                        if (!domainInfo.isEmpty()) {
+                            JSONReplyMessage.put("data", domainInfo.toJSONObject());
+                        } else {
+                            JSONReplyMessage.put("data", new JSONObject().toString());
+                        }
+                        break;
+                }
+                JSONReplyMessage.put("succeed", true);
+            } catch (NamingException err) {
+                JSONObject JSONError = new JSONObject();
+                JSONError.put("error", err.getMessage());
+                JSONError.put("details", err.getExplanation());
+                JSONReplyMessage.put("data", JSONError);
+                JSONReplyMessage.put("succeed", false);
+            } finally {
+                JSONReplyMessage.put("type", "Reply");
+                session.getBasicRemote().sendText(JSONReplyMessage.toString());
             }
-            session.getBasicRemote().sendText(JSONReplyMessage);
         }
 
         @javax.websocket.OnOpen
         public void onOpen(javax.websocket.Session session, javax.websocket.EndpointConfig ec) throws java.io.IOException {
             System.out.println("OnOpen... " + ec.getUserProperties().get("Author"));
             session.getBasicRemote().sendText("{ \"type\": \"Handshake\", \"data\": \"check\"}");
-
+            try {
+                JNDI_DNS.getSuffix();
+            } catch (NamingException e) {
+                e.printStackTrace();
+            }
             // TODO Recupération de tout les suffixe et envois au client
         }
 
         // TODO Ajout des methodes d'envois d'information/reponce
-        
+
     }
 
     public static void main(String[] args) {

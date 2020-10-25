@@ -29,8 +29,8 @@ window.onload = () => {
                 if (reply.data !== "check")
                     service.onerror(undefined);
                 break;
-            case "reply" :
-                console.log(reply.data);
+            case "Reply" :
+                console.log(reply);
                 break;
             default :
                 console.log("Unknown reply type");
@@ -43,7 +43,7 @@ window.onload = () => {
         if (response) {
             service.send(JSON.stringify({
                 type: "Handshake",
-                data: "check?"
+                data: {}
             }));
         }
     };
@@ -61,11 +61,17 @@ window.onload = () => {
         let input = document.getElementById('inputText');
         let inputValue = input.value;
 
+        // Verification of the url
         if(inputValue) {
             if (inputValue.match(/[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)?/gi)) {
+
+                // Sending of the request
                 service.send(JSON.stringify({
                     type: "Request",
-                    data: inputValue
+                    data: {
+                        url: inputValue,
+                        dns: "dns://8.8.8.8"
+                    }
                 }));
                 console.log("Request Send to the WebSocketServer");
             } else {
@@ -77,6 +83,7 @@ window.onload = () => {
 
     // Event listener for the input text field
     // TODO Ajouter la verification de la valeur de l'input (C'est c'est bien une url et que le suffixe est correct
+    // On vas peux etre ajouté les event listener dans onopen pour evité toute interaction avant qu'une connexion sois faite
     document.getElementById("button").addEventListener("click", service.getDNSInformation);
     document.getElementById("inputText").addEventListener("keypress", (event) => {
         console.log(event);
