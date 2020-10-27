@@ -72,7 +72,7 @@ window.onload = () => {
                     type: "Request",
                     data: {
                         url: inputValue,
-                        dns: "dns://194.167.156.13"
+                        dns: "dns://8.8.8.8"
                     }
                 }));
                 console.log("Request Send to the WebSocketServer");
