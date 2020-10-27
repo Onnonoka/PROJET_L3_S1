@@ -42,6 +42,12 @@
             <artifactId>json</artifactId>
             <version>20200518</version>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <name>WebSockets_Tyrus_1_15.Java.Maven</name>
 </project>

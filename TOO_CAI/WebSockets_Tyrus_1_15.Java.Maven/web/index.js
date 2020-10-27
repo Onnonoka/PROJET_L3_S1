@@ -37,15 +37,17 @@ window.onload = () => {
         }
     };
     service.onopen = () => {
-        // TODO Demande des suffixes url (com, fr, ...) au serveur webSocket
         console.log("service.onopen...");
         let response = window.confirm(service.url + " just opened... Say 'Hi!'?");
-        if (response) {
-            service.send(JSON.stringify({
-                type: "Handshake",
-                data: {}
-            }));
-        }
+        // TODO Ajouter la verification de la valeur de l'input (C'est c'est bien une url et que le suffixe est correct
+
+        // Event listener for the input text field
+        document.getElementById("button").addEventListener("click", service.getDNSInformation);
+        document.getElementById("inputText").addEventListener("keypress", (event) => {
+            console.log(event);
+            if (event.code === "Enter")
+                service.getDNSInformation();
+        });
     };
     service.onclose = (event/*:CloseEvent*/) => {
         // TODO Fermeture de la connexion
@@ -70,7 +72,7 @@ window.onload = () => {
                     type: "Request",
                     data: {
                         url: inputValue,
-                        dns: "dns://8.8.8.8"
+                        dns: "dns://194.167.156.13"
                     }
                 }));
                 console.log("Request Send to the WebSocketServer");
@@ -79,17 +81,6 @@ window.onload = () => {
             }
         }
     };
-
-
-    // Event listener for the input text field
-    // TODO Ajouter la verification de la valeur de l'input (C'est c'est bien une url et que le suffixe est correct
-    // On vas peux etre ajouté les event listener dans onopen pour evité toute interaction avant qu'une connexion sois faite
-    document.getElementById("button").addEventListener("click", service.getDNSInformation);
-    document.getElementById("inputText").addEventListener("keypress", (event) => {
-        console.log(event);
-        if (event.code === "Enter")
-            service.getDNSInformation();
-    });
 
     // TODO Fonction d'affichage des informations
 

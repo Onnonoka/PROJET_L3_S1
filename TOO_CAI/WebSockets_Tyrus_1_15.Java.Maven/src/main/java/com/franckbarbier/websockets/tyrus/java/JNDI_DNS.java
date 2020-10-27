@@ -10,7 +10,6 @@ package com.franckbarbier.websockets.tyrus.java;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import javax.naming.*;
 import javax.naming.directory.Attributes;
 import javax.naming.directory.DirContext;
@@ -67,28 +66,25 @@ public class JNDI_DNS {
     }
 
     /**
-     *
-     * @return
+     * STATIC! Get and return a list of url suffix (con, fr, ...)
+     * @return List<String>
      */
     public static List<String> getSuffix() throws NamingException {
-        java.util.Properties _p = new java.util.Properties();
-        // For Java 9 and more: https://mvnrepository.com/artifact/com.sun.jndi/dns:
-        _p.setProperty(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.dns.DnsContextFactory");
-        InitialContext _ic = new InitialContext(_p);
+        java.util.Properties dirContextEnv = new java.util.Properties();
+        dirContextEnv.setProperty(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.dns.DnsContextFactory");
+        InitialContext _ic = new InitialContext(dirContextEnv);
         List<String> suffix = new ArrayList<>();
-        System.out.println("\nInitial context: " + _ic.getNameInNamespace());
-        System.out.println("1 ok");
-        NamingEnumeration ne = _ic.list("");
-        System.out.println("2 ok");
+
+        System.out.println("\nInitial context: " + _ic.getNameInNamespace());  // Message de test
+        System.out.println("1 ok");                                            // Message de test
+        NamingEnumeration<NameClassPair> ne = _ic.list("");
+        System.out.println("2 ok");                                            // Message de test
         while (ne.hasMore()) {
-            suffix.add(ne.next().toString());
+            suffix.add(ne.next().getName());
         }
         _ic.close();
         return suffix;
-
     }
-
-    // TODO Ajout de la methode (static?) qui recupére la liste des suffixe d'un url
 
     /**
      * return the Domain values in JSONObject

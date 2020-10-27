@@ -8,6 +8,7 @@
 
 package com.franckbarbier.websockets.tyrus.java;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.naming.NamingException;
@@ -31,20 +32,20 @@ public class WebSockets_illustration {
         }
 
         @javax.websocket.OnError
-        public void onError(javax.websocket.Session session, Throwable throwable) {
+        public void onError(javax.websocket.Session session, Throwable err) {
             // TODO Gestion des erreurs
-            System.out.println("onError: " + throwable.getMessage());
+            System.err.println("onError: " + err.getMessage());
+            JSONObject JSONReplyMessage = new JSONObject();
+            JSONObject JSONError = new JSONObject();
+            JSONError.put("error", err.toString());
+            JSONError.put("details", err.getMessage());
+            JSONReplyMessage.put("data", JSONError);
+            JSONReplyMessage.put("succeed", false);
+            System.err.println(JSONReplyMessage.toString());
         }
 
         @OnMessage
-        public void onMessage(Session session, String message) throws java.io.IOException {
-
-            // Version nul
-            /*
-            JsonReader jsonReader = Json.createReader(new StringReader(message));
-            JsonObject JSONRequestMessage = jsonReader.readObject();
-            jsonReader.close();
-            */
+        public void onMessage(Session session, String message) throws java.io.IOException, NamingException {
 
             JSONObject JSONMessage = new JSONObject(message);
             JSONObject JSONMessageData = JSONMessage.getJSONObject("data");
@@ -55,51 +56,26 @@ public class WebSockets_illustration {
             System.out.println("Message from JavaScript: " + message);
             System.out.println("data : " +  JSONMessageData.toString());
 
-            try {
-                switch (JSONMessage.getString("type")) {
-                    case "Handshake":
-
-                        // TODO Envois des suffixe url (con, fr, ...) au client
-                    /*String RequestMessageData = JSONMessage.getString("data");
-                    JSONMessage.put("data", RequestMessageData.substring(0, RequestMessageData.length() - 1));
-                    JSONReplyMessage = JSONMessage;*/
-
-                        break;
-                    case "Request":
-                        JNDI_DNS domainInfo = new JNDI_DNS(JSONMessageData.getString("url"), JSONMessageData.getString("dns"));
-                        if (!domainInfo.isEmpty()) {
-                            JSONReplyMessage.put("data", domainInfo.toJSONObject());
-                        } else {
-                            JSONReplyMessage.put("data", new JSONObject().toString());
-                        }
-                        break;
-                }
-                JSONReplyMessage.put("succeed", true);
-            } catch (NamingException err) {
-                JSONObject JSONError = new JSONObject();
-                JSONError.put("error", err.getMessage());
-                JSONError.put("details", err.getExplanation());
-                JSONReplyMessage.put("data", JSONError);
-                JSONReplyMessage.put("succeed", false);
-            } finally {
-                JSONReplyMessage.put("type", "Reply");
-                session.getBasicRemote().sendText(JSONReplyMessage.toString());
+            JNDI_DNS domainInfo = new JNDI_DNS(JSONMessageData.getString("url"), JSONMessageData.getString("dns"));
+            if (!domainInfo.isEmpty()) {
+                JSONReplyMessage.put("data", domainInfo.toJSONObject());
+            } else {
+                JSONReplyMessage.put("data", new JSONObject().toString());
             }
+
+            JSONReplyMessage.put("succeed", true);
+            JSONReplyMessage.put("type", "Reply");
+            session.getBasicRemote().sendText(JSONReplyMessage.toString());
         }
 
         @javax.websocket.OnOpen
-        public void onOpen(javax.websocket.Session session, javax.websocket.EndpointConfig ec) throws java.io.IOException {
-            System.out.println("OnOpen... " + ec.getUserProperties().get("Author"));
-            session.getBasicRemote().sendText("{ \"type\": \"Handshake\", \"data\": \"check\"}");
-            try {
-                JNDI_DNS.getSuffix();
-            } catch (NamingException e) {
-                e.printStackTrace();
-            }
-            // TODO Recupération de tout les suffixe et envois au client
+        public void onOpen(javax.websocket.Session session, javax.websocket.EndpointConfig ec) throws java.io.IOException, NamingException {
+            JSONObject JSONMessage = new JSONObject();
+            JSONMessage.put("type", "");
+            /*System.out.println("OnOpen... " + ec.getUserProperties().get("Author"));*/
+            JSONMessage.put("data", new JSONArray(JNDI_DNS.getSuffix()));
+            session.getBasicRemote().sendText(JSONMessage.toString());
         }
-
-        // TODO Ajout des methodes d'envois d'information/reponce
 
     }
 
