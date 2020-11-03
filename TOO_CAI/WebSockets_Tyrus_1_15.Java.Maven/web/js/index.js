@@ -25,7 +25,7 @@ window.onload = () => {
 
         let reply = JSON.parse(event.data);
         switch (reply.type) {
-            case "Handshake" :
+            case "auth" :
                 if (reply.data !== "check")
                     service.onerror(undefined);
                 break;
@@ -42,12 +42,12 @@ window.onload = () => {
         // TODO Ajouter la verification de la valeur de l'input (C'est c'est bien une url et que le suffixe est correct
 
         // Event listener for the input text field
-        document.getElementById("button").addEventListener("click", service.getDNSInformation);
+        /*document.getElementById("button").addEventListener("click", service.getDNSInformation);
         document.getElementById("inputText").addEventListener("keypress", (event) => {
             console.log(event);
             if (event.code === "Enter")
                 service.getDNSInformation();
-        });
+        });*/
     };
     service.onclose = (event/*:CloseEvent*/) => {
         // TODO Fermeture de la connexion
@@ -81,6 +81,10 @@ window.onload = () => {
             }
         }
     };
+
+    MODEL.service = service;
+    MODEL.init()
+    console.log("fait", MODEL.service);
 
     // TODO Fonction d'affichage des informations
 

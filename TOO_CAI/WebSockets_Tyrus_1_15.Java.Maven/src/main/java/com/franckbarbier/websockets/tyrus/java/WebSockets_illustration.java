@@ -8,15 +8,24 @@
 
 package com.franckbarbier.websockets.tyrus.java;
 
+// For json
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.naming.NamingException;
 import javax.websocket.OnMessage;
 import javax.websocket.Session;
+import java.util.HashMap;
+
+// For GlassfishServer
+// For read/write file
+
+
 
 //https://tyrus-project.github.io/documentation/1.12/user-guide.html#getting-started
 public class WebSockets_illustration {
+
+    static HashMap<String, client> clientList = new HashMap<>(); // list of client connected
 
     /**
      * Danger : il faut que le constructeur de 'My_ServerEndpoint' soit bien
@@ -28,7 +37,7 @@ public class WebSockets_illustration {
         @javax.websocket.OnClose
         public void onClose(javax.websocket.Session session, javax.websocket.CloseReason close_reason) {
             // TODO Faire une fermeture propre de la connexion
-            System.out.println("onClose: " + close_reason.getReasonPhrase());
+            System.out.println("onClose: " + close_reason.getReasonPhrase() + "\n id: " + session.getId());
         }
 
         @javax.websocket.OnError
@@ -41,6 +50,14 @@ public class WebSockets_illustration {
             JSONError.put("details", err.getMessage());
             JSONReplyMessage.put("data", JSONError);
             JSONReplyMessage.put("succeed", false);
+            JSONReplyMessage.put("type", "Reply");
+            /*
+            // Plus compliqué que prévus!
+            try {
+                session.getBasicRemote().sendText(JSONReplyMessage.toString());
+            } catch (IOException e) {
+
+            }*/
             System.err.println(JSONReplyMessage.toString());
         }
 
@@ -56,22 +73,71 @@ public class WebSockets_illustration {
             System.out.println("Message from JavaScript: " + message);
             System.out.println("data : " +  JSONMessageData.toString());
 
-            JNDI_DNS domainInfo = new JNDI_DNS(JSONMessageData.getString("url"), JSONMessageData.getString("dns"));
-            if (!domainInfo.isEmpty()) {
-                JSONReplyMessage.put("data", domainInfo.toJSONObject());
-            } else {
-                JSONReplyMessage.put("data", new JSONObject().toString());
+            switch(JSONMessage.getString("type")) {
+                // Creating a new User
+                case "newAuth":
+                    client newUser = new client(JSONMessageData.getString("username"), JSONMessageData.getString("password"));
+                    if (newUser.create()) {
+                        JSONReplyMessage.put("succeed", true);
+                        newUser.save(new JSONObject().toString());
+                    } else {
+                        JSONReplyMessage.put("succeed", false);
+                    }
+                    JSONReplyMessage.put("type", "newAuth");
+                    JSONReplyMessage.put("data", new JSONObject());
+                    break;
+
+                // Oppening a User
+                case "auth":
+                    client user = new client(JSONMessageData.getString("username"), JSONMessageData.getString("password"));
+                    JSONReplyMessage.put("type", "auth");
+                    if (user.exist()) {
+                        JSONReplyMessage.put("succeed", true);
+                        JSONReplyMessage.put("data", new JSONObject(user.get()));
+                        WebSockets_illustration.clientList.put(session.getId(), user);
+                    } else {
+                        JSONReplyMessage.put("succeed", false);
+                        JSONReplyMessage.put("data", new JSONObject());
+                    }
+                    break;
+
+                // Reply a JNDI request
+                case "request":
+                    JNDI_DNS domainInfo = new JNDI_DNS(JSONMessageData.getString("url"), JSONMessageData.getString("dns"));
+                    if (!domainInfo.isEmpty()) {
+                        JSONReplyMessage.put("data", domainInfo.toJSONObject());
+                    } else {
+                        JSONReplyMessage.put("data", new JSONObject().toString());
+                    }
+                    JSONReplyMessage.put("url", JSONMessageData.getString("url"));
+                    JSONReplyMessage.put("succeed", true);
+                    JSONReplyMessage.put("type", "reply");
+                    break;
+
+                // Save the User save in his file
+                case "save":
+                    client userSave = WebSockets_illustration.clientList.get(session.getId());
+                    if (userSave.save(JSONMessageData.toString())) {
+                        JSONReplyMessage.put("succeed", true);
+                        JSONReplyMessage.put("type", "save");
+                        JSONReplyMessage.put("data", new JSONObject());
+                    } else {
+                        JSONReplyMessage.put("succeed", false);
+                        JSONReplyMessage.put("type", "save");
+                        JSONReplyMessage.put("data", new JSONObject());
+                    }
+                    break;
             }
 
-            JSONReplyMessage.put("succeed", true);
-            JSONReplyMessage.put("type", "Reply");
+            System.out.println("Message send : " + JSONReplyMessage.toString());
             session.getBasicRemote().sendText(JSONReplyMessage.toString());
         }
 
         @javax.websocket.OnOpen
         public void onOpen(javax.websocket.Session session, javax.websocket.EndpointConfig ec) throws java.io.IOException, NamingException {
+            new client("test1", "test2");
             JSONObject JSONMessage = new JSONObject();
-            JSONMessage.put("type", "");
+            JSONMessage.put("type", "info");
             /*System.out.println("OnOpen... " + ec.getUserProperties().get("Author"));*/
             JSONMessage.put("data", new JSONArray(JNDI_DNS.getSuffix()));
             session.getBasicRemote().sendText(JSONMessage.toString());

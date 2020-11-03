@@ -18,12 +18,179 @@
             TODO Changer le petit icon de l'onglet du navigateur
         <link rel="shortcut icon" href="./img/favicon.ico"/>
         -->
-        <link rel="stylesheet" href="styles.css">
-        <script src="./index.js"></script>
+        <!-- stylesheet -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+
+        <!-- Script -->
+        <script src="./js/sweetalert2.all.min.js"></script>
+        <script src="./js/model.js"></script>
+        <script src="js/index.js"></script>
     </head>
     <body>
+        <div class="container">
+            <br>
+            <div id="logButton" class="col-lg-3">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-primary" onclick="MODEL.signIn()">Sign in</button>
+                    <button type="button" class="btn btn-primary" onclick="MODEL.login()">Login</button>
+                </div>
+            </div>
+            <br>
+            <h1 class="text-center">WhoIs.com</h1>
+            <br><br>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card border-secondary">
+                        <div class="card-header">
+                            <ul id="leftCardTab" class="nav nav-pills card-header-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active">
+                                        New domain
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div id="inputField" class="input-group">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        Enter domain name :
+                                    </span>
+                                </div>
+                                <input value="" type="text" class="form-control" placeholder="www.WhoIs.com" onchange="MODEL.getNewURLInfo(value)" />
+                            </div>
+                            <br><br>
+                            <div id="cardData" class="container">
+                                <div class="">
+                                    <h5 class="p-1 mb-2 bg-primary text-white">A</h5>
+                                    No data found
+                                </div>
+                                <br>
+                                <div class="">
+                                    <h5 class="p-1 mb-2 bg-primary text-white">AAAA</h5>
+                                    No data found
+                                </div>
+                                <br>
+                                <div class="">
+                                    <h5 class="p-1 mb-2 bg-primary text-white">CNAME</h5>
+                                    No data found
+                                </div>
+                                <br>
+                                <div class="">
+                                    <h5 class="p-1 mb-2 bg-primary text-white">MX</h5>
+                                    No data found
+                                </div>
+                                <br>
+                                <div class="">
+                                    <h5 class="p-1 mb-2 bg-primary text-white">NS</h5>
+                                    No data found
+                                </div>
+                                <br>
+                                <div class="">
+                                    <h5 class="p-1 mb-2 bg-primary text-white">PTR</h5>
+                                    No data found
+                                </div>
+                                <br>
+                                <div class="">
+                                    <h5 class="p-1 mb-2 bg-primary text-white">SRV</h5>
+                                    No data found
+                                </div>
+                                <br>
+                                <div class="">
+                                    <h5 class="p-1 mb-2 bg-primary text-white">SOA</h5>
+                                    No data found
+                                </div>
+                                <br>
+                                <div class="">
+                                    <h5 class="p-1 mb-2 bg-primary text-white">TXT</h5>
+                                    No data found
+                                </div>
+                                <br>
+                                <div class="">
+                                    <h5 class="p-1 mb-2 bg-primary text-white">HINFO</h5>
+                                    No data found
+                                </div>
+                                <br>
+                                <div class="">
+                                    <h5 class="p-1 mb-2 bg-primary text-white">NAPTR</h5>
+                                    No data found
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="col-lg-6">
+                    <div class="card border-secondary">
+                        <div class="card-header">
+                            <ul class="nav nav-pills card-header-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active">
+                                        No data store
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="container">
+                                <div class="input-group">
+                                    <form>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" class=""> A
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" class=""> AAAA
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" class=""> CNAME
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" class=""> MX
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" class=""> NS
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" class=""> PTR
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" class=""> SRV
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" class=""> SOA
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" class=""> TXT
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" class=""> HINFO
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" class=""> NAPTR
+                                        </label>
+                                    </form>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="container">
+
+                                No data store
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-end">
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--
-        Please open the console to trace messages... 
+        Please open the console to trace messages...
         <div align="center">
             <img src="./img/@.png" height="60" width="200">
         </div>
@@ -33,29 +200,32 @@
 
             L'interface suivante sers aux test est n'est pas definitive
         -->
+        <!--
+
+        !!! Conserver cette interface
+
         <header>
             <h1 id="title">WhoIs</h1>
         </header>
         <div id="inputField">
             <h2>Get information of your domain name right now!</h2>
             <div id="userInteractionField">
-                <input id="inputText" class="" placeholder="www.WhoIs.com" value="" /><button id="button"><img
+                 Il y a le type url mais y faut qu'il y ai http devant
+                <input type="url" id="inputText" class="" placeholder="www.WhoIs.com" value="" /><button id="button"><img
                     src="./img/searchIcon.png" width="25px" height="25px" alt=""/></button>
-                <!--
+
                 <select>
                     <option value="dns://194.167.156.13">UPPA</option>
                     <option value="dns://8.8.8.8">Google</option>
                     <option value="dns://193.146.78.14">University of Mondragon</option>
                 </select>
-                <select>
-                    <option value="A">ANY</option>
-                    <option value="AAAA">AAAA</option>
-                    <option value="CNAME">CNAME</option>
-                    ...
-                </select>
-                -->
+
+                <div id="MoreOptions">
+
+                </div>
             </div>
         </div>
         <div id="replyField"></div>
+    -->
     </body>
 </html>
