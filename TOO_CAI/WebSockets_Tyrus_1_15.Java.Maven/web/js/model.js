@@ -6,7 +6,7 @@ let MODEL = {
         card: {
             leftCard: {
                 inputValue: "",
-                tabs: [],
+                tabs: {},
                 currentTab: 0
             },
             rightCard: {}
@@ -37,7 +37,7 @@ let MODEL = {
     init() {
         this.service = new WebSocket("ws://localhost:1963/FranckBarbier/WebSockets_illustration");
         this.service.onmessage = (event) => {
-            console.log("Message from Java: ", event.data);
+            console.log("Message from Java: ", JSON.parse(event.data));
 
             let message = JSON.parse(event.data);
             switch (message.type) {
@@ -83,14 +83,11 @@ let MODEL = {
                     break;
 
                 case "reply" :
-                    let dataPos = this.data.card.leftCard.tabs.map(elt => {return elt.url}).indexOf(message.data.url); // return undefined if not find
-                    if (dataPos != -1) {
-                        this.data.card.leftCard.tabs[dataPos].data = message.data;
-                    } else {
-                        this.data.card.leftCard.tabs.push({
+                    if (message.succeed) {
+                        this.data.card.leftCard.tabs.data = {
                             data: message.data,
                             url: message.url
-                        });
+                        };
                     }
                     break;
                 case 'info':

@@ -34,109 +34,32 @@ let VIEW = {
         },
 
         currentCard(MODEL) {
-            let data = MODEL.card.leftCard.tabs[MODEL.card.leftCard.currentTab].data;
-            let cardData = "";
-            Object.keys(data).sort().forEach( (key) => {
-                // Les champs vide = je connais pas le format des info
-                // TODO completer le switch
 
-                cardData += `<h5 class="p-1 mb-2 bg-primary text-white">${key}</h5>`;
-                switch (key) {
-                    case 'A':
-                    case 'AAAA':
-                        cardData += `
-                        <div class="table-responsive">
-                            <table class="col-12 table table-sm table-bordered">
-                                <thead>
-                                    <th class="align-middle text-center col-2"> Address </th>
-                                </thead>
-                                ${data[key].map( (elt) => {
-                                    return `<tr><td>${elt}</td></tr>`
-                                }).join('\n')}
-                            </table>
-                        </div>
-                        `;
-                        break;
-                    case 'CNAME':
-                        break;
-                    case 'MS':
-                        cardData += `
-                        <div class="table-responsive">
-                            <table class="col-12 table table-sm table-bordered">
-                                <thead>
-                                    <th class="align-middle text-center col-2"> Pref </th>
-                                    <th class="align-middle text-center col-2"> Hostname </th>
-                                </thead>
-                                ${data[key].map( (elt) => {
-                                    elt = elt.split(' ');
-                                    return `<tr><td>${elt[0]}</td><td>${elt[1]}</td></tr>`
-                                }).join('\n')}
-                            </table>
-                        </div>
-                        `;
-                        break;
-
-                    case 'NS':
-                        cardData += `
-                        <div class="table-responsive">
-                            <table class="col-12 table table-sm table-bordered">
-                                <thead>
-                                    <th class="align-middle text-center col-2"> NS </th>
-                                </thead>
-                                ${data[key].map( (elt) => {
-                                    return `<tr><td>${elt}</td></tr>`
-                                }).join('\n')}
-                            </table>
-                        </div>
-                        `;
-                        break;
-                    case 'PTR':
-                        break;
-                    case 'SRV':
-                        break;
-                    case 'SOA':
-                        cardData += `
-                        <div class="table-responsive">
-                            <table class="col-12 table table-sm table-bordered">
-                                <thead>
-                                    <th class="align-middle text-center col-2"> Primary NS </th>
-                                    <th class="align-middle text-center col-2"> Responsible Email </th>
-                                </thead>
-                                ${data[key].map( (elt) => {
-                                    elt = elt.split(' ');
-                                    return `<tr><td>${elt[0]}</td><td>${elt[1]}</td></tr>`
-                                }).join('\n')}
-                            </table>
-                        </div>
-                        `;
-                        break;
-                    case 'TXT':
-                        cardData += `
-                        <div class="table-responsive">
-                            <table class="col-12 table table-sm table-bordered">
-                                <thead>
-                                    <th class="align-middle text-center col-2"> Record </th>
-                                </thead>
-                                ${data[key].map( (elt) => {
-                                    return `<tr><td>${elt}</td></tr>`
-                                }).join('\n')}
-                            </table>
-                        </div>
-                        `;
-                        break;
-                    case 'HINFO':
-                        break;
-                    case 'NAPTR':
-                        break;
-                }
-            });
             return cardData;
         }
     },
 
-    rightCardTabs(MODEL) {
+    rightCard: {
 
     },
+
+    loginButton(MODEL) {
+        if(MODEL.isLog) {
+            return `<div id="logButton" class="col-lg-3">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-danger" onclick="MODEL.disconnect()">Sign in</button>
+                </div>
+            </div>`;
+        } else {
+            return `<div id="logButton" class="col-lg-3">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-outline-primary" onclick="MODEL.signIn()">Sign in</button>
+                    <button type="button" class="btn btn-primary" onclick="MODEL.login()">Login</button>
+                </div>
+            </div>`;
+        }
+    },
+
     display(MODEL, STATE) {
 
     }
