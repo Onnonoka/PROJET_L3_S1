@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="lagrossebitedefredola" version="4">
+  <OBJECT>
+    <ID name="lagrossebitedefredola" mc="Standard.Project" uid="d32a29d1-c2bc-4dc9-a2be-4f03dd00aa2d"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[lagrossebitedefredola]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Model">
+        <COMPID name="lagrossebitedefredola" mc="Standard.Package" uid="f4aa4227-3bd6-44c0-ba77-68d69219d2a1"/>
+      </COMP>
+      <COMP relation="DiagramRoot">
+        <COMPID name="lagrossebitedefredola" mc="Infrastructure.DiagramSet" uid="64062cb8-bdaa-4ccd-a14b-6cad7a386d4b"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

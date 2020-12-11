@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="lagrossebitedefredola" version="4">
+  <OBJECT>
+    <ID name="lagrossebitedefredola" mc="Standard.Package" uid="f4aa4227-3bd6-44c0-ba77-68d69219d2a1"/>
+    <PID name="lagrossebitedefredola" mc="Standard.Project" uid="d32a29d1-c2bc-4dc9-a2be-4f03dd00aa2d"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[lagrossebitedefredola]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Partie" mc="Standard.Class" uid="979447ef-004b-421f-ba18-36c9ba712d23"/>
+        <COMPID name="Plis" mc="Standard.Class" uid="fd3400a0-49ea-499a-a849-63e987b62f43"/>
+        <COMPID name="Joueur" mc="Standard.Class" uid="46669d63-6418-42ae-8d9b-6243d962ce60"/>
+        <COMPID name="Paquet" mc="Standard.Class" uid="006402d9-b52f-4457-b1c5-b61543b43e02"/>
+        <COMPID name="Carte" mc="Standard.Class" uid="d2da23b2-7760-484e-b6aa-6319dc3370c9"/>
+        <COMPID name="Equipe" mc="Standard.Class" uid="6a5c1f40-6766-4013-b354-07f037f168d1"/>
+        <COMPID name="JMain" mc="Standard.Class" uid="19f1d08f-59b3-430b-91e9-1cb0526a9888"/>
+        <COMPID name="Manche" mc="Standard.Class" uid="27c61c5e-3f58-477d-ba34-710363335da5"/>
+        <COMPID name="CarteDansJMain" mc="Standard.Class" uid="5ac5c45d-91f0-43ef-a37d-e9b5713c1330"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="Diagramme de classe lagrossebitedefredola" mc="Standard.ClassDiagram" uid="7dbd08ec-f302-408e-87b8-d661c3be5ca4"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
