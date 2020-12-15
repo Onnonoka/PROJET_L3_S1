@@ -17,45 +17,6 @@
     <DEPENDENCIES>
       <COMP relation="OwnedOperation">
         <OBJECT>
-          <ID name="2Equipes" mc="Standard.Operation" uid="3de3f22d-9b1b-4390-993f-0a2ef2dc5600"/>
-          <ATTRIBUTES>
-            <ATT name="Concurrency">false</ATT>
-            <ATT name="Final">false</ATT>
-            <ATT name="Passing">MethodOut</ATT>
-            <ATT name="Visibility">Public</ATT>
-            <ATT name="IsClass">false</ATT>
-            <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[2Equipes]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES>
-            <COMP relation="Return">
-              <OBJECT>
-                <ID name="p1" mc="Standard.Parameter" uid="568a60e5-cde7-47ae-a332-63e777c15f03"/>
-                <ATTRIBUTES>
-                  <ATT name="ParameterPassing">In</ATT>
-                  <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
-                  <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
-                  <ATT name="TypeConstraint"></ATT>
-                  <ATT name="DefaultValue"></ATT>
-                  <ATT name="IsOrdered">false</ATT>
-                  <ATT name="IsUnique">false</ATT>
-                  <ATT name="IsException">false</ATT>
-                  <ATT name="IsStream">false</ATT>
-                  <ATT name="Effect">ReadEffect</ATT>
-                  <ATT name="Name"><![CDATA[p1]]></ATT>
-                  <ATT name="status">1970354901745664</ATT>
-                </ATTRIBUTES>
-                <DEPENDENCIES>
-                  <LINK relation="Type">
-                    <FOREIGNID name="boolean" mc="Standard.DataType" uid="00000004-0000-0005-0000-000000000000"/>
-                  </LINK>
-                </DEPENDENCIES>
-              </OBJECT>
-            </COMP>
-          </DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
           <ID name="afficherEquipegagnante" mc="Standard.Operation" uid="b58144ea-006c-492d-aebf-2b90ff91539e"/>
           <ATTRIBUTES>
             <ATT name="Concurrency">false</ATT>
@@ -93,20 +54,6 @@
             <ATT name="IsClass">false</ATT>
             <ATT name="IsAbstract">false</ATT>
             <ATT name="Name"><![CDATA[AfficherNbPointsTotalManche]]></ATT>
-            <ATT name="status">1970354901745664</ATT>
-          </ATTRIBUTES>
-          <DEPENDENCIES></DEPENDENCIES>
-        </OBJECT>
-        <OBJECT>
-          <ID name="DistribuerCartes" mc="Standard.Operation" uid="f9278c41-9083-4e11-b728-794d2985a122"/>
-          <ATTRIBUTES>
-            <ATT name="Concurrency">false</ATT>
-            <ATT name="Final">false</ATT>
-            <ATT name="Passing">MethodOut</ATT>
-            <ATT name="Visibility">Public</ATT>
-            <ATT name="IsClass">false</ATT>
-            <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[DistribuerCartes]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES></DEPENDENCIES>
@@ -161,6 +108,14 @@
             </LINK>
           </DEPENDENCIES>
         </OBJECT>
+      </COMP>
+      <COMP relation="OwnedEnd">
+        <REFOBJ>
+          <ID name="manche" mc="Standard.AssociationEnd" uid="37449243-c6be-4760-a43a-f9dd4b60dadf"/>
+        </REFOBJ>
+        <REFOBJ>
+          <ID name="equipe" mc="Standard.AssociationEnd" uid="f3742074-b22f-4bad-829d-3b637af293ad"/>
+        </REFOBJ>
       </COMP>
     </DEPENDENCIES>
   </OBJECT>

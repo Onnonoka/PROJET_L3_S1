@@ -92,16 +92,59 @@
           </ATTRIBUTES>
           <DEPENDENCIES>
             <LINK relation="Type">
-              <FOREIGNID name="string" mc="Standard.DataType" uid="00000004-0000-000d-0000-000000000000"/>
+              <REFOBJ>
+                <ID name="Symbole" mc="Standard.Enumeration" uid="36cf2ba5-4090-4e30-a501-9cc83d715296"/>
+              </REFOBJ>
             </LINK>
           </DEPENDENCIES>
         </OBJECT>
+      </COMP>
+      <COMP relation="OwnedNaryEnd">
         <OBJECT>
-          <ID name="nbpoint_horsatout" mc="Standard.Attribute" uid="6209737f-94ac-4b5e-aea7-cdf24d8c1d75"/>
+          <ID name="" mc="Standard.NaryAssociationEnd" uid="8c125d10-0149-4ac6-8e98-65d6549219f4"/>
           <ATTRIBUTES>
-            <ATT name="TypeConstraint"></ATT>
-            <ATT name="Value"></ATT>
-            <ATT name="TargetIsClass">false</ATT>
+            <ATT name="Changeable">ReadWrite</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[4]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[4]]></ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="NaryAssociation">
+              <OBJECT>
+                <ID name="" mc="Standard.NaryAssociation" uid="89b51a32-08b3-49d1-b84c-ed5c914769cf"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="NaryEnd">
+                    <COMPID name="" mc="Standard.NaryAssociationEnd" uid="8c125d10-0149-4ac6-8e98-65d6549219f4"/>
+                    <REFOBJ>
+                      <ID name="" mc="Standard.NaryAssociationEnd" uid="5c8a7fd1-8b11-432c-8aba-d91da3fb6738"/>
+                    </REFOBJ>
+                    <REFOBJ>
+                      <ID name="" mc="Standard.NaryAssociationEnd" uid="38e2bf28-ef0d-45eb-8f8a-c9bc3b3b5cb9"/>
+                    </REFOBJ>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+      <COMP relation="OwnedEnd">
+        <OBJECT>
+          <ID name="" mc="Standard.AssociationEnd" uid="e7799704-712f-4ba6-b16e-30e2f8071b19"/>
+          <ATTRIBUTES>
+            <ATT name="Aggregation">KindIsAssociation</ATT>
+            <ATT name="IsChangeable">true</ATT>
             <ATT name="Changeable">ReadWrite</ATT>
             <ATT name="IsDerived">false</ATT>
             <ATT name="IsOrdered">false</ATT>
@@ -111,21 +154,55 @@
             <ATT name="Visibility">Public</ATT>
             <ATT name="IsClass">false</ATT>
             <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[nbpoint_horsatout]]></ATT>
+            <ATT name="Name"></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
-            <LINK relation="Type">
-              <FOREIGNID name="integer" mc="Standard.DataType" uid="00000004-0000-0009-0000-000000000000"/>
-            </LINK>
+            <COMP relation="Opposite">
+              <OBJECT>
+                <ID name="carte" mc="Standard.AssociationEnd" uid="895839a0-a72c-49ca-8aac-2eda3264bffb"/>
+                <ATTRIBUTES>
+                  <ATT name="Aggregation">KindIsComposition</ATT>
+                  <ATT name="IsChangeable">true</ATT>
+                  <ATT name="Changeable">ReadWrite</ATT>
+                  <ATT name="IsDerived">false</ATT>
+                  <ATT name="IsOrdered">false</ATT>
+                  <ATT name="IsUnique">false</ATT>
+                  <ATT name="MultiplicityMin"><![CDATA[32]]></ATT>
+                  <ATT name="MultiplicityMax"><![CDATA[32]]></ATT>
+                  <ATT name="Visibility">Public</ATT>
+                  <ATT name="IsClass">false</ATT>
+                  <ATT name="IsAbstract">false</ATT>
+                  <ATT name="Name"><![CDATA[carte]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <COMP relation="Opposite">
+                    <COMPID name="" mc="Standard.AssociationEnd" uid="e7799704-712f-4ba6-b16e-30e2f8071b19"/>
+                  </COMP>
+                  <COMP relation="Association">
+                    <OBJECT>
+                      <ID name="" mc="Standard.Association" uid="40af2561-80a8-412c-a540-3a5060a6d661"/>
+                      <ATTRIBUTES>
+                        <ATT name="Name"></ATT>
+                        <ATT name="status">1970354901745664</ATT>
+                      </ATTRIBUTES>
+                      <DEPENDENCIES></DEPENDENCIES>
+                    </OBJECT>
+                  </COMP>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <COMP relation="Association">
+              <COMPID name="" mc="Standard.Association" uid="40af2561-80a8-412c-a540-3a5060a6d661"/>
+            </COMP>
           </DEPENDENCIES>
         </OBJECT>
         <OBJECT>
-          <ID name="nbpoints_atout" mc="Standard.Attribute" uid="5aef169f-a77c-4b50-8b7b-e39afc29a334"/>
+          <ID name="jMain" mc="Standard.AssociationEnd" uid="1b78056d-c8ea-454f-a80c-88f1526a7ca8"/>
           <ATTRIBUTES>
-            <ATT name="TypeConstraint"></ATT>
-            <ATT name="Value"></ATT>
-            <ATT name="TargetIsClass">false</ATT>
+            <ATT name="Aggregation">KindIsAssociation</ATT>
+            <ATT name="IsChangeable">true</ATT>
             <ATT name="Changeable">ReadWrite</ATT>
             <ATT name="IsDerived">false</ATT>
             <ATT name="IsOrdered">false</ATT>
@@ -135,15 +212,30 @@
             <ATT name="Visibility">Public</ATT>
             <ATT name="IsClass">false</ATT>
             <ATT name="IsAbstract">false</ATT>
-            <ATT name="Name"><![CDATA[nbpoints_atout]]></ATT>
+            <ATT name="Name"><![CDATA[jMain]]></ATT>
             <ATT name="status">1970354901745664</ATT>
           </ATTRIBUTES>
           <DEPENDENCIES>
-            <LINK relation="Type">
-              <FOREIGNID name="integer" mc="Standard.DataType" uid="00000004-0000-0009-0000-000000000000"/>
-            </LINK>
+            <COMP relation="Opposite">
+              <REFOBJ>
+                <ID name="" mc="Standard.AssociationEnd" uid="8364541c-ec08-44c5-8165-1127ddc2bab3"/>
+              </REFOBJ>
+            </COMP>
+            <COMP relation="Association">
+              <OBJECT>
+                <ID name="" mc="Standard.Association" uid="81df4b1e-83d6-4cc4-98bc-149c9feeb3c6"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+            </COMP>
           </DEPENDENCIES>
         </OBJECT>
+        <REFOBJ>
+          <ID name="manche" mc="Standard.AssociationEnd" uid="430ad6e2-c290-40b1-9f33-99bd1c966b08"/>
+        </REFOBJ>
       </COMP>
     </DEPENDENCIES>
   </OBJECT>

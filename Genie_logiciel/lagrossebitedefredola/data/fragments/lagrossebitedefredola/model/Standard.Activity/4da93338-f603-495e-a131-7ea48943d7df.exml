@@ -1,0 +1,755 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Activity" version="4">
+  <OBJECT>
+    <ID name="Activity" mc="Standard.Activity" uid="4da93338-f603-495e-a131-7ea48943d7df"/>
+    <PID name="lagrossebitedefredola" mc="Standard.Package" uid="f4aa4227-3bd6-44c0-ba77-68d69219d2a1"/>
+    <ATTRIBUTES>
+      <ATT name="IsSingleExecution">false</ATT>
+      <ATT name="IsReadOnly">false</ATT>
+      <ATT name="IsReentrant">false</ATT>
+      <ATT name="Name"><![CDATA[Activity]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedNode">
+        <OBJECT>
+          <ID name="Melanger carte" mc="Standard.OpaqueAction" uid="f66a9bc2-5362-4ce0-8262-405f37605ffe"/>
+          <ATTRIBUTES>
+            <ATT name="Body"></ATT>
+            <ATT name="IsMultipleInstance">false</ATT>
+            <ATT name="IsCompensation">false</ATT>
+            <ATT name="Name"><![CDATA[Melanger carte]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="1eb1c603-f478-45f9-989c-982c58d747f9"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="un joueur distribuer carte" mc="Standard.OpaqueAction" uid="e9236ac9-f406-45bd-ade8-fda4168ff0b0"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Initial Node" mc="Standard.InitialNode" uid="8a63a2fe-489e-4c95-add2-2b95d0873ab0"/>
+          <ATTRIBUTES>
+            <ATT name="Name"><![CDATA[Initial Node]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="2885d98d-882e-41fa-a827-57dd585c4669"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Decision-Merge1" mc="Standard.DecisionMergeNode" uid="8d37df31-2d13-42da-abe1-8db9634c059d"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="un joueur distribuer carte" mc="Standard.OpaqueAction" uid="e9236ac9-f406-45bd-ade8-fda4168ff0b0"/>
+          <ATTRIBUTES>
+            <ATT name="Body"></ATT>
+            <ATT name="IsMultipleInstance">false</ATT>
+            <ATT name="IsCompensation">false</ATT>
+            <ATT name="Name"><![CDATA[un joueur distribuer carte]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="e86429a5-adb7-4088-9930-4691a8c65f00"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Choix de l'atout" mc="Standard.OpaqueAction" uid="7fe078f6-ace3-4fdb-94c0-c1fe7d6219a3"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Choix de l'atout" mc="Standard.OpaqueAction" uid="7fe078f6-ace3-4fdb-94c0-c1fe7d6219a3"/>
+          <ATTRIBUTES>
+            <ATT name="Body"></ATT>
+            <ATT name="IsMultipleInstance">false</ATT>
+            <ATT name="IsCompensation">false</ATT>
+            <ATT name="Name"><![CDATA[Choix de l'atout]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="631767c6-0336-48b2-9a56-2a2135d49d9b"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Decision-Merge" mc="Standard.DecisionMergeNode" uid="1fe99c66-941b-475a-bb9c-b98c64ecff52"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Victoire equipe 1" mc="Standard.OpaqueAction" uid="1c6adc7a-7a40-4195-b956-87ebcbdec043"/>
+          <ATTRIBUTES>
+            <ATT name="Body"></ATT>
+            <ATT name="IsMultipleInstance">false</ATT>
+            <ATT name="IsCompensation">false</ATT>
+            <ATT name="Name"><![CDATA[Victoire equipe 1]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="9d3bc7b1-d6f3-4b89-b627-549413829384"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Activity Final Node" mc="Standard.ActivityFinalNode" uid="ec9600b4-8e04-4df5-9f5e-29168af746d1"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Activity Final Node" mc="Standard.ActivityFinalNode" uid="ec9600b4-8e04-4df5-9f5e-29168af746d1"/>
+          <ATTRIBUTES>
+            <ATT name="Name"><![CDATA[Activity Final Node]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES></DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Victoire equipe 2" mc="Standard.OpaqueAction" uid="3a4c549d-7e84-4257-a38b-448f971ef3bb"/>
+          <ATTRIBUTES>
+            <ATT name="Body"></ATT>
+            <ATT name="IsMultipleInstance">false</ATT>
+            <ATT name="IsCompensation">false</ATT>
+            <ATT name="Name"><![CDATA[Victoire equipe 2]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="4bd6f706-d591-4b42-a218-562e7036ef68"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Activity Final Node" mc="Standard.ActivityFinalNode" uid="ec9600b4-8e04-4df5-9f5e-29168af746d1"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Decision-Merge1" mc="Standard.DecisionMergeNode" uid="8d37df31-2d13-42da-abe1-8db9634c059d"/>
+          <ATTRIBUTES>
+            <ATT name="DecisionKind">ExclusiveDecision</ATT>
+            <ATT name="DecisionInputBehavior"><![CDATA[Equipe 1 point supperieur a 5]]></ATT>
+            <ATT name="Name"><![CDATA[Decision-Merge1]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="254a335d-7717-4b42-8ae3-4383033c7397"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"><![CDATA[Point de l'equipe 1 >= 501]]></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Victoire equipe 1" mc="Standard.OpaqueAction" uid="1c6adc7a-7a40-4195-b956-87ebcbdec043"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="e65ce6e6-8483-40fc-8986-994a162f2047"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"><![CDATA[Point de l'equipe 2 >= 501]]></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Victoire equipe 2" mc="Standard.OpaqueAction" uid="3a4c549d-7e84-4257-a38b-448f971ef3bb"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="910a6a02-3c2c-4bdb-9acc-ee09e4a6dff3"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"><![CDATA[Point de l'equipe 1 < 501 ET points de l'equipe 2 < 501]]></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Melanger carte" mc="Standard.OpaqueAction" uid="f66a9bc2-5362-4ce0-8262-405f37605ffe"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Joueur de gauche joue une carte" mc="Standard.OpaqueAction" uid="6e9da82b-9fd9-4de2-be8e-65f67ba17c73"/>
+          <ATTRIBUTES>
+            <ATT name="Body"></ATT>
+            <ATT name="IsMultipleInstance">false</ATT>
+            <ATT name="IsCompensation">false</ATT>
+            <ATT name="Name"><![CDATA[Joueur de gauche joue une carte]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="877b63e0-8e51-4b33-9d6e-69c61aa93535"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Decision-Merge2" mc="Standard.DecisionMergeNode" uid="9a85f005-a419-42a6-8aba-62036778ba3f"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Action1" mc="Standard.OpaqueAction" uid="0efb908f-5979-4513-a797-7bf01637dee1"/>
+          <ATTRIBUTES>
+            <ATT name="Body"></ATT>
+            <ATT name="IsMultipleInstance">false</ATT>
+            <ATT name="IsCompensation">false</ATT>
+            <ATT name="Name"><![CDATA[Action1]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES></DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Action2" mc="Standard.OpaqueAction" uid="a5ac90a4-47bd-4e2b-b1ad-e9919e63ae2b"/>
+          <ATTRIBUTES>
+            <ATT name="Body"></ATT>
+            <ATT name="IsMultipleInstance">false</ATT>
+            <ATT name="IsCompensation">false</ATT>
+            <ATT name="Name"><![CDATA[Action2]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES></DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Decision-Merge" mc="Standard.DecisionMergeNode" uid="1fe99c66-941b-475a-bb9c-b98c64ecff52"/>
+          <ATTRIBUTES>
+            <ATT name="DecisionKind">ExclusiveDecision</ATT>
+            <ATT name="DecisionInputBehavior"></ATT>
+            <ATT name="Name"><![CDATA[Decision-Merge]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="7139dd26-20e1-412a-98c7-41b5696296e7"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"><![CDATA[Pas le 1er plis de la 1ere manche]]></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Joueur vainceur du plis precedant joue une carte" mc="Standard.OpaqueAction" uid="714dd9b1-8b33-4b33-a773-ffbc17dfb82f"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="33ded870-b198-4aa1-9b33-b5de03a3ecf1"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"><![CDATA[1ere manche et 1er plis]]></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Joueur a gauche de celui qui a distribuer joue une carte" mc="Standard.OpaqueAction" uid="9f2b2f71-9258-44e8-bc90-a72725149008"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Joueur vainceur du plis precedant joue une carte" mc="Standard.OpaqueAction" uid="714dd9b1-8b33-4b33-a773-ffbc17dfb82f"/>
+          <ATTRIBUTES>
+            <ATT name="Body"></ATT>
+            <ATT name="IsMultipleInstance">false</ATT>
+            <ATT name="IsCompensation">false</ATT>
+            <ATT name="Name"><![CDATA[Joueur vainceur du plis precedant joue une carte]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="0d165a08-ce93-4fa0-8d6c-58b4e88a57c9"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Joueur de gauche joue une carte" mc="Standard.OpaqueAction" uid="6e9da82b-9fd9-4de2-be8e-65f67ba17c73"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Decision-Merge2" mc="Standard.DecisionMergeNode" uid="9a85f005-a419-42a6-8aba-62036778ba3f"/>
+          <ATTRIBUTES>
+            <ATT name="DecisionKind">ExclusiveDecision</ATT>
+            <ATT name="DecisionInputBehavior"></ATT>
+            <ATT name="Name"><![CDATA[Decision-Merge2]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="b3691cc9-a9db-4bf4-bb37-4222e9374450"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"><![CDATA[Moins de 4 carte ont été posé]]></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Joueur de gauche joue une carte" mc="Standard.OpaqueAction" uid="6e9da82b-9fd9-4de2-be8e-65f67ba17c73"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="23d1b53e-5aba-4b62-a1a5-10a40cc7b601"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"><![CDATA[4 carte on ete posé]]></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Decision-Merge3" mc="Standard.DecisionMergeNode" uid="d5b509c2-c820-4b82-8918-3663d5ce57cb"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Decision-Merge3" mc="Standard.DecisionMergeNode" uid="d5b509c2-c820-4b82-8918-3663d5ce57cb"/>
+          <ATTRIBUTES>
+            <ATT name="DecisionKind">ExclusiveDecision</ATT>
+            <ATT name="DecisionInputBehavior"></ATT>
+            <ATT name="Name"><![CDATA[Decision-Merge3]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="ecb22c88-825c-465a-9e62-99d04c93971e"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"><![CDATA[Nombre de plis de la manche < 8]]></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Decision-Merge" mc="Standard.DecisionMergeNode" uid="1fe99c66-941b-475a-bb9c-b98c64ecff52"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="61a60826-a89a-4747-80dc-0357bba492f0"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"><![CDATA[Nombre de plis de la manche = 8]]></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Decision-Merge4" mc="Standard.DecisionMergeNode" uid="445e8bca-4e50-4eb2-aabe-ee0de1e97ac8"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Decision-Merge4" mc="Standard.DecisionMergeNode" uid="445e8bca-4e50-4eb2-aabe-ee0de1e97ac8"/>
+          <ATTRIBUTES>
+            <ATT name="DecisionKind">ExclusiveDecision</ATT>
+            <ATT name="DecisionInputBehavior"></ATT>
+            <ATT name="Name"><![CDATA[Decision-Merge4]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="00cd8ad2-0939-4faf-bac9-53f39a5c74ad"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"><![CDATA[L'equipe qui a choisie l'atout a gagne tout les plis]]></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="L'equipe qui a choisie l'atout gagne 252 points" mc="Standard.OpaqueAction" uid="4798315a-849a-4303-9f4d-1f16a05a92c4"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="8c132d3b-6567-4994-b6f6-77e539227025"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"><![CDATA[L'equipe qui a choisie l'atout a marqué 81 point ou plus]]></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="L'equipe qui a choisie l'atout gagne les points de la manche" mc="Standard.OpaqueAction" uid="3c199122-3aba-4f9a-a097-e7dd575275b7"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="fcf26246-fcae-47a6-afe5-733eabe8e890"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"><![CDATA[L'equipe qui a choisie l'atout a marqué moins de 81 points]]></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Lequipe qui n'as pas choisi l'atout marque 160 points" mc="Standard.OpaqueAction" uid="53d796f1-79dc-48c3-a1c5-eb8955d5d1d6"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="L'equipe qui a choisie l'atout gagne 252 points" mc="Standard.OpaqueAction" uid="4798315a-849a-4303-9f4d-1f16a05a92c4"/>
+          <ATTRIBUTES>
+            <ATT name="Body"></ATT>
+            <ATT name="IsMultipleInstance">false</ATT>
+            <ATT name="IsCompensation">false</ATT>
+            <ATT name="Name"><![CDATA[L'equipe qui a choisie l'atout gagne 252 points]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="e8604d4f-97a5-41ba-ba5d-da96c4cf5be2"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Decision-Merge5" mc="Standard.DecisionMergeNode" uid="b0daa56a-3b64-4ba3-8f0a-22953255c51a"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="L'equipe qui a choisie l'atout gagne les points de la manche" mc="Standard.OpaqueAction" uid="3c199122-3aba-4f9a-a097-e7dd575275b7"/>
+          <ATTRIBUTES>
+            <ATT name="Body"></ATT>
+            <ATT name="IsMultipleInstance">false</ATT>
+            <ATT name="IsCompensation">false</ATT>
+            <ATT name="Name"><![CDATA[L'equipe qui a choisie l'atout gagne les points de la manche]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="03fc0373-26ff-42f5-9b02-6ad5883f7f06"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Decision-Merge5" mc="Standard.DecisionMergeNode" uid="b0daa56a-3b64-4ba3-8f0a-22953255c51a"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Lequipe qui n'as pas choisi l'atout marque 160 points" mc="Standard.OpaqueAction" uid="53d796f1-79dc-48c3-a1c5-eb8955d5d1d6"/>
+          <ATTRIBUTES>
+            <ATT name="Body"></ATT>
+            <ATT name="IsMultipleInstance">false</ATT>
+            <ATT name="IsCompensation">false</ATT>
+            <ATT name="Name"><![CDATA[Lequipe qui n'as pas choisi l'atout marque 160 points]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="2b2c5148-b188-461f-a519-840f5b1d8fba"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Decision-Merge5" mc="Standard.DecisionMergeNode" uid="b0daa56a-3b64-4ba3-8f0a-22953255c51a"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Decision-Merge5" mc="Standard.DecisionMergeNode" uid="b0daa56a-3b64-4ba3-8f0a-22953255c51a"/>
+          <ATTRIBUTES>
+            <ATT name="DecisionKind">ExclusiveDecision</ATT>
+            <ATT name="DecisionInputBehavior"></ATT>
+            <ATT name="Name"><![CDATA[Decision-Merge5]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="8a995c69-52ba-4c79-b1ff-4a9945fbd733"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"><![CDATA[Il y a eu belote/rebelote]]></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="L'equipe qui a fait Belote/Rebelote marque 20 point" mc="Standard.OpaqueAction" uid="6b2676f6-0ee5-465a-9eaf-b11dc0043722"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="27704ab1-6dc4-4fd2-a697-4547ae5f5b4b"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"><![CDATA[Il n'y a pas eu belote/rebelote]]></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Decision-Merge1" mc="Standard.DecisionMergeNode" uid="8d37df31-2d13-42da-abe1-8db9634c059d"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="L'equipe qui a fait Belote/Rebelote marque 20 point" mc="Standard.OpaqueAction" uid="6b2676f6-0ee5-465a-9eaf-b11dc0043722"/>
+          <ATTRIBUTES>
+            <ATT name="Body"></ATT>
+            <ATT name="IsMultipleInstance">false</ATT>
+            <ATT name="IsCompensation">false</ATT>
+            <ATT name="Name"><![CDATA[L'equipe qui a fait Belote/Rebelote marque 20 point]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="32fa9f85-0f56-4ec8-83ec-811da7d69aca"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Decision-Merge1" mc="Standard.DecisionMergeNode" uid="8d37df31-2d13-42da-abe1-8db9634c059d"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <OBJECT>
+          <ID name="Joueur a gauche de celui qui a distribuer joue une carte" mc="Standard.OpaqueAction" uid="9f2b2f71-9258-44e8-bc90-a72725149008"/>
+          <ATTRIBUTES>
+            <ATT name="Body"></ATT>
+            <ATT name="IsMultipleInstance">false</ATT>
+            <ATT name="IsCompensation">false</ATT>
+            <ATT name="Name"><![CDATA[Joueur a gauche de celui qui a distribuer joue une carte]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Outgoing">
+              <OBJECT>
+                <ID name="ControlFlow" mc="Standard.ControlFlow" uid="8b1cd789-e84b-48a3-b8b6-d5bdb700d92c"/>
+                <ATTRIBUTES>
+                  <ATT name="Guard"></ATT>
+                  <ATT name="Weight"><![CDATA[1]]></ATT>
+                  <ATT name="Name"><![CDATA[ControlFlow]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Target">
+                    <REFOBJ>
+                      <ID name="Joueur de gauche joue une carte" mc="Standard.OpaqueAction" uid="6e9da82b-9fd9-4de2-be8e-65f67ba17c73"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+      <COMP relation="OwnedCollaboration">
+        <OBJECT>
+          <ID name="locals" mc="Standard.Collaboration" uid="7ccd58af-773f-49f7-92fb-3057a700f9f1"/>
+          <ATTRIBUTES>
+            <ATT name="IsConcurrent">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="IsLeaf">false</ATT>
+            <ATT name="IsRoot">false</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="Name"><![CDATA[locals]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES></DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="Diagramme d'activité Activity" mc="Standard.ActivityDiagram" uid="919ff180-197b-4f9e-874a-4ff8dc263bbd"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

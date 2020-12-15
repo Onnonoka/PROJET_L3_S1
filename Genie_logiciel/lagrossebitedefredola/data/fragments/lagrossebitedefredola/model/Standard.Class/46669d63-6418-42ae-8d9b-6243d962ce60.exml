@@ -132,6 +132,105 @@
             </LINK>
           </DEPENDENCIES>
         </OBJECT>
+        <OBJECT>
+          <ID name="ADistribuer" mc="Standard.Attribute" uid="259e5f3a-4489-4549-ae14-8b2d9ade03e5"/>
+          <ATTRIBUTES>
+            <ATT name="TypeConstraint"></ATT>
+            <ATT name="Value"></ATT>
+            <ATT name="TargetIsClass">false</ATT>
+            <ATT name="Changeable">ReadWrite</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"><![CDATA[ADistribuer]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="Type">
+              <FOREIGNID name="boolean" mc="Standard.DataType" uid="00000004-0000-0005-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+      <COMP relation="OwnedNaryEnd">
+        <OBJECT>
+          <ID name="" mc="Standard.NaryAssociationEnd" uid="38e2bf28-ef0d-45eb-8f8a-c9bc3b3b5cb9"/>
+          <ATTRIBUTES>
+            <ATT name="Changeable">ReadWrite</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[4]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[4]]></ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="NaryAssociation">
+              <REFOBJ>
+                <ID name="" mc="Standard.NaryAssociation" uid="89b51a32-08b3-49d1-b84c-ed5c914769cf"/>
+              </REFOBJ>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+      <COMP relation="OwnedEnd">
+        <OBJECT>
+          <ID name="" mc="Standard.AssociationEnd" uid="2ae7c9b6-2ebc-4af8-ac7b-dee6de57c20e"/>
+          <ATTRIBUTES>
+            <ATT name="Aggregation">KindIsAssociation</ATT>
+            <ATT name="IsChangeable">true</ATT>
+            <ATT name="Changeable">ReadWrite</ATT>
+            <ATT name="IsDerived">false</ATT>
+            <ATT name="IsOrdered">false</ATT>
+            <ATT name="IsUnique">false</ATT>
+            <ATT name="MultiplicityMin"><![CDATA[1]]></ATT>
+            <ATT name="MultiplicityMax"><![CDATA[1]]></ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="IsClass">false</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Opposite">
+              <REFOBJ>
+                <ID name="joueur" mc="Standard.AssociationEnd" uid="299f13f1-c8b0-4ec7-9b4d-102b6323ae29"/>
+              </REFOBJ>
+            </COMP>
+            <COMP relation="Association">
+              <REFOBJ>
+                <ID name="" mc="Standard.Association" uid="40b15e7f-417e-4b0e-b229-705546256a4d"/>
+              </REFOBJ>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <REFOBJ>
+          <ID name="manche" mc="Standard.AssociationEnd" uid="182da795-398c-431a-82bd-c121f1a489c6"/>
+        </REFOBJ>
+      </COMP>
+      <COMP relation="Parent">
+        <OBJECT>
+          <ID name="Generalization" mc="Standard.Generalization" uid="5f0a37ba-b4c8-4daf-a667-d7a56fc22b8a"/>
+          <ATTRIBUTES>
+            <ATT name="Discriminator"></ATT>
+            <ATT name="Name"><![CDATA[Generalization]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="SuperType">
+              <ID name="JMain" mc="Standard.Class" uid="19f1d08f-59b3-430b-91e9-1cb0526a9888"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
       </COMP>
     </DEPENDENCIES>
   </OBJECT>

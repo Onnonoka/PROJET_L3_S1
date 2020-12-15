@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Dame" version="4">
+  <OBJECT>
+    <ID name="Dame" mc="Standard.DataType" uid="942953b9-45f7-44d2-8784-75dcd19949a3"/>
+    <PID name="lagrossebitedefredola" mc="Standard.Package" uid="f4aa4227-3bd6-44c0-ba77-68d69219d2a1"/>
+    <ATTRIBUTES>
+      <ATT name="IsElementary">true</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Dame]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

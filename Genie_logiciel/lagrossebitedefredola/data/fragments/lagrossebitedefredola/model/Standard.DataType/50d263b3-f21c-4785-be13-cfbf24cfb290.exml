@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Valet" version="4">
+  <OBJECT>
+    <ID name="Valet" mc="Standard.DataType" uid="50d263b3-f21c-4785-be13-cfbf24cfb290"/>
+    <PID name="lagrossebitedefredola" mc="Standard.Package" uid="f4aa4227-3bd6-44c0-ba77-68d69219d2a1"/>
+    <ATTRIBUTES>
+      <ATT name="IsElementary">true</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Valet]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

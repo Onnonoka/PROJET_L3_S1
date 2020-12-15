@@ -13,7 +13,7 @@ window.onload = () => {
     // Tested with Tyrus 1.15 WebSockets Java library
     let service = new WebSocket("ws://localhost:1963/FranckBarbier/WebSockets_illustration");
     console.log(service);
-    service.onerror = () => {
+    /*service.onerror = () => {
         // TODO Traitement des erreurs
         window.alert("service.onerror...");
     };
@@ -47,9 +47,9 @@ window.onload = () => {
             console.log(event);
             if (event.code === "Enter")
                 service.getDNSInformation();
-        });*/
+        });
     };
-    service.onclose = (event/*:CloseEvent*/) => {
+    service.onclose = (event:CloseEvent) => {
         // TODO Fermeture de la connexion
         console.log("service.onclose... " + event.code);
         window.alert("Bye! See you later...");
@@ -80,7 +80,7 @@ window.onload = () => {
                 window.confirm("It's not a url");
             }
         }
-    };
+    };*/
 
     MODEL.service = service;
     MODEL.init()

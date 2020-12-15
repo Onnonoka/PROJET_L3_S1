@@ -13,6 +13,9 @@
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
     <DEPENDENCIES>
+      <COMP relation="OwnedBehavior">
+        <COMPID name="Activity" mc="Standard.Activity" uid="4da93338-f603-495e-a131-7ea48943d7df"/>
+      </COMP>
       <COMP relation="OwnedElement">
         <COMPID name="Partie" mc="Standard.Class" uid="979447ef-004b-421f-ba18-36c9ba712d23"/>
         <COMPID name="Plis" mc="Standard.Class" uid="fd3400a0-49ea-499a-a849-63e987b62f43"/>
@@ -22,7 +25,43 @@
         <COMPID name="Equipe" mc="Standard.Class" uid="6a5c1f40-6766-4013-b354-07f037f168d1"/>
         <COMPID name="JMain" mc="Standard.Class" uid="19f1d08f-59b3-430b-91e9-1cb0526a9888"/>
         <COMPID name="Manche" mc="Standard.Class" uid="27c61c5e-3f58-477d-ba34-710363335da5"/>
-        <COMPID name="CarteDansJMain" mc="Standard.Class" uid="5ac5c45d-91f0-43ef-a37d-e9b5713c1330"/>
+        <OBJECT>
+          <ID name="Symbole" mc="Standard.Enumeration" uid="36cf2ba5-4090-4e30-a501-9cc83d715296"/>
+          <ATTRIBUTES>
+            <ATT name="IsElementary">true</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="IsLeaf">false</ATT>
+            <ATT name="IsRoot">false</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="Name"><![CDATA[Symbole]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="OwnedElement">
+              <OBJECT>
+                <ID name="7" mc="Standard.Enumeration" uid="43438f2f-4346-4350-857a-01bf546076cc"/>
+                <ATTRIBUTES>
+                  <ATT name="IsElementary">true</ATT>
+                  <ATT name="IsAbstract">false</ATT>
+                  <ATT name="IsLeaf">false</ATT>
+                  <ATT name="IsRoot">false</ATT>
+                  <ATT name="Visibility">Public</ATT>
+                  <ATT name="Name"><![CDATA[7]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <COMPID name="8" mc="Standard.DataType" uid="e34ed64a-439b-4c72-9333-1a3a53faf248"/>
+              <COMPID name="9" mc="Standard.DataType" uid="e8993f24-4c97-4629-832c-4a780bc7fb8a"/>
+              <COMPID name="10" mc="Standard.DataType" uid="f0f593b3-1c5a-45d9-8b0d-09450641a5eb"/>
+              <COMPID name="Valet" mc="Standard.DataType" uid="50d263b3-f21c-4785-be13-cfbf24cfb290"/>
+              <COMPID name="Dame" mc="Standard.DataType" uid="942953b9-45f7-44d2-8784-75dcd19949a3"/>
+              <COMPID name="Roi" mc="Standard.DataType" uid="918dbfce-c822-4ead-9df3-41cf659a0e19"/>
+              <COMPID name="As" mc="Standard.DataType" uid="304bc4d9-14eb-4930-9737-93ca92a396bc"/>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+        <COMPID name="valeurCarte" mc="Standard.Class" uid="f4c2b081-e311-4a87-8619-85d1b84028cb"/>
       </COMP>
       <COMP relation="Product">
         <COMPID name="Diagramme de classe lagrossebitedefredola" mc="Standard.ClassDiagram" uid="7dbd08ec-f302-408e-87b8-d661c3be5ca4"/>
