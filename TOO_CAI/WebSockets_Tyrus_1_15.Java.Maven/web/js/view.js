@@ -1,67 +1,59 @@
 let VIEW = {
 
-    leftCard: {
+    card: {
         tab(MODEL) {
-            let leftCard = MODEL.data.card.leftCard;
-            let tabs = "";
-            if (leftCard.tabs.length > 0) {
-                leftCard.tabs.forEatch( (elt, index) => {
-                    tabs += `<li class="nav-item">
-                        <a class="nav-link ${leftCard.currentTab === index ? "active" : ""}">
-                           ${elt.url}
+            return `<li class="nav-item">
+                        <a class="nav-link active">
+                            ${MODEL.data.card.tabs.url || "New Domain"}
                         </a>
-                     </li>`
-                });
-            } else {
-                tabs = `<li class="nav-item">
-                <a class="nav-link active">
-                    New domain
-                </a>
-            </li>`;
-            }
-            return tabs;
+                    </li>`;
         },
 
         inputField(MODEL) {
             return `<div class="input-group-append">
-                <span class="input-group-text">
-                    Enter domain name :
-                </span>
-            </div>
-            <input value="${MODEL.leftCard.inputValue}" type="text" class="form-control ${
-                !MODEL.card.leftCard.inputValue.match(/[-a-zA-Z0-9@:%._+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)?/gi)? "border-danger" : ""
-            }" placeholder="www.WhoIs.com" onchange="MODEL.getNewURLInfo(value)" />`;
+                        <span class="input-group-text">
+                            Enter domain name :
+                        </span>
+                    </div>
+                    <input value="${MODEL.data.card.inputValue}" type="text" class="form-control ${
+                        MODEL.isValidURL() || MODEL.data.card.inputValue === "" ? "" : "border-danger"
+                    }" placeholder="www.WhoIs.com" onchange="MODEL.getNewURLInfo(value)" />`;
         },
 
-        currentCard(MODEL) {
-
-            return cardData;
+        card(MODEL) {
+            let data = MODEL.data.card.tabs.data;
+            if (data) {
+                let card = "";
+                Object.keys(data).sort().forEach((key) => {
+                    card += `<div class="">
+                                <h5 class="p-1 mb-2 bg-primary text-white">${key}</h5>
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        ${data[key].map((elt) => {
+                                            return `<tr><td class="" style="width=50px"><b>${key}</b></td><td class="">${elt}</td></tr>`;
+                                        }).join(' ')}
+                                    </table>
+                                </div>
+                            </div>
+                            <br>`;
+                });
+                return card;
+            }
+            let dataType = ["A", "AAAA", "CNAME", "HINFO", "MX", "NAPTR", "NS", "PTR", "SOA", "SRV", "TXT"];
+            return dataType.map((type) => {
+                return `<div class="">
+                            <h5 class="p-1 mb-2 bg-primary text-white">${type}</h5>
+                            No data found
+                        </div>
+                        <br>`;
+            }).join('\n');
         }
     },
 
-    rightCard: {
-
-    },
-
-    loginButton(MODEL) {
-        if(MODEL.isLog) {
-            return `<div id="logButton" class="col-lg-3">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-outline-danger" onclick="MODEL.disconnect()">Sign in</button>
-                </div>
-            </div>`;
-        } else {
-            return `<div id="logButton" class="col-lg-3">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-outline-primary" onclick="MODEL.signIn()">Sign in</button>
-                    <button type="button" class="btn btn-primary" onclick="MODEL.login()">Login</button>
-                </div>
-            </div>`;
-        }
-    },
-
-    display(MODEL, STATE) {
-
+    display(STATE) {
+        document.getElementById('cardTab').innerHTML = STATE.card.tab;
+        document.getElementById('inputField').innerHTML = STATE.card.inputField;
+        document.getElementById('cardData').innerHTML = STATE.card.data;
     }
 
 }

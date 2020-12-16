@@ -1,35 +1,24 @@
 let STATE = {
-    leftCard: {
-        tabs: "",
+    card: {
+        tab: "",
         inputField: "",
-        data: "",
-        footer: ""
+        data: ""
     },
-    rightCard: {
-      tabs: "",
-      checkbox: "",
-      data: "",
-      footer: ""
-    },
-    logButton: "",
 
     represent(MODEL) {
         let hasChanged = MODEL.hasChanged;
         if (hasChanged.card.tabs) {
-            this.tabs = VIEW.leftCard.tab(MODEL);
+            this.card.tab = VIEW.card.tab(MODEL);
+            this.card.data = VIEW.card.card(MODEL);
         }
         if (hasChanged.card.inputValue) {
-            this.inputField = VIEW.leftCard.inputField(MODEL);
+            this.card.inputField = VIEW.card.inputField(MODEL);
         }
-        if (hasChanged.card.currentTab) {
-            this.leftCard.data = VIEW.leftCard.currentCard(MODEL);
-        }
-        // TODO Fonction d'affichage
 
-        this.display(MODEL);
+        this.display();
     },
 
-    display(MODEL) {
-        VIEW.display(MODEL, STATE);
+    display() {
+        VIEW.display(this);
     }
 }

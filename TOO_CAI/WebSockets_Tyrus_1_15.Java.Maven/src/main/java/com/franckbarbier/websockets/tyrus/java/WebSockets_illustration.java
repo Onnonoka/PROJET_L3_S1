@@ -96,6 +96,7 @@ public class WebSockets_illustration {
             JSONMessage.put("type", "info");
             /*System.out.println("OnOpen... " + ec.getUserProperties().get("Author"));*/
             JSONMessage.put("data", new JSONArray(JNDI_DNS.getSuffix()));
+            JSONMessage.put("succeed", true);
             session.getBasicRemote().sendText(JSONMessage.toString());
         }
 
