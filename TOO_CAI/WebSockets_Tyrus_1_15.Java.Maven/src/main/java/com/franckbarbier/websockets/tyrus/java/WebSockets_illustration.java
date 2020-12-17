@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import javax.naming.NamingException;
 import javax.websocket.OnMessage;
 import javax.websocket.Session;
+import java.io.IOException;
 
 // For GlassfishServer
 // For read/write file
@@ -33,13 +34,11 @@ public class WebSockets_illustration {
 
         @javax.websocket.OnClose
         public void onClose(javax.websocket.Session session, javax.websocket.CloseReason close_reason) {
-            // TODO Faire une fermeture propre de la connexion
             System.out.println("onClose: " + close_reason.getReasonPhrase() + "\n id: " + session.getId());
         }
 
         @javax.websocket.OnError
-        public void onError(javax.websocket.Session session, Throwable err) {
-            // TODO Gestion des erreurs
+        public void onError(javax.websocket.Session session, Throwable err) throws IOException {
             System.err.println("onError: " + err.getMessage());
             JSONObject JSONReplyMessage = new JSONObject();
             JSONObject JSONError = new JSONObject();
@@ -47,14 +46,9 @@ public class WebSockets_illustration {
             JSONError.put("details", err.getMessage());
             JSONReplyMessage.put("data", JSONError);
             JSONReplyMessage.put("succeed", false);
-            JSONReplyMessage.put("type", "Reply");
-            /*
-            // Plus compliqué que prévus!
-            try {
-                session.getBasicRemote().sendText(JSONReplyMessage.toString());
-            } catch (IOException e) {
 
-            }*/
+            session.getBasicRemote().sendText(JSONReplyMessage.toString());
+
             System.err.println(JSONReplyMessage.toString());
         }
 
@@ -65,37 +59,39 @@ public class WebSockets_illustration {
             JSONObject JSONMessageData = JSONMessage.getJSONObject("data");
             JSONObject JSONReplyMessage = new JSONObject();
 
-            // Fonction de test a suppr une fois la partie fini
-            System.out.println("From JSONObject : " + JSONMessage.get("type"));
-            System.out.println("Message from JavaScript: " + message);
-            System.out.println("data : " +  JSONMessageData.toString());
-
-            switch(JSONMessage.getString("type")) {
-
+            if (JSONMessage.getString("type").equals("request")) {
                 // Reply a JNDI request
-                case "request":
-                    JNDI_DNS domainInfo = new JNDI_DNS(JSONMessageData.getString("url"), JSONMessageData.getString("dns"));
-                    if (!domainInfo.isEmpty()) {
-                        JSONReplyMessage.put("data", domainInfo.toJSONObject());
-                    } else {
-                        JSONReplyMessage.put("data", new JSONObject().toString());
-                    }
-                    JSONReplyMessage.put("url", JSONMessageData.getString("url"));
-                    JSONReplyMessage.put("succeed", true);
-                    JSONReplyMessage.put("type", "reply");
-                    break;
+                JNDI_DNS domainInfo;
+                try {
+                    domainInfo = new JNDI_DNS(JSONMessageData.getString("url"), JSONMessageData.getString("dns"));
+                } catch (NamingException err) {
+                    throw (new NamingException("DNS name not found!"));
+                }
+                if (!domainInfo.isEmpty()) {
+                    JSONReplyMessage.put("data", domainInfo.toJSONObject());
+                } else {
+                    JSONReplyMessage.put("data", new JSONObject().toString());
+                }
+                JSONReplyMessage.put("url", JSONMessageData.getString("url"));
+                JSONReplyMessage.put("succeed", true);
+                JSONReplyMessage.put("type", "reply");
+            } else {
+                throw (new IOException("Unknown message format!"));
             }
 
-            System.out.println("Message send : " + JSONReplyMessage.toString());
+            System.out.println("Message send to " + session.getId());
             session.getBasicRemote().sendText(JSONReplyMessage.toString());
         }
 
         @javax.websocket.OnOpen
-        public void onOpen(javax.websocket.Session session, javax.websocket.EndpointConfig ec) throws java.io.IOException, NamingException {
+        public void onOpen(javax.websocket.Session session, javax.websocket.EndpointConfig ec) throws IOException, NamingException {
             JSONObject JSONMessage = new JSONObject();
             JSONMessage.put("type", "info");
-            /*System.out.println("OnOpen... " + ec.getUserProperties().get("Author"));*/
-            JSONMessage.put("data", new JSONArray(JNDI_DNS.getSuffix()));
+            try {
+                JSONMessage.put("data", new JSONArray(JNDI_DNS.getSuffix()));
+            } catch (NamingException err) {
+                throw (new NamingException("Unable to get suffixes!"));
+            }
             JSONMessage.put("succeed", true);
             session.getBasicRemote().sendText(JSONMessage.toString());
         }
