@@ -1,3 +1,11 @@
+/*
+    ************************************************************
+    |  Script ecrit par Dymko Frédéric, Cazaux Axel            |
+    |  L3 informatique                                         |
+    |  Projet TOO/CAI                                          |
+    ************************************************************
+*/
+
 let STATE = {
     card: {
         tab: "",
