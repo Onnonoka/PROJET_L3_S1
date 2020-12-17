@@ -30,7 +30,7 @@ let VIEW = {
                                 <div class="table-responsive">
                                     <table class="table table-sm">
                                         ${data[key].map((elt) => {
-                                            return `<tr><td class="" style="width=50px"><b>${key}</b></td><td class="">${elt}</td></tr>`;
+                                            return `<tr class="d-flex"><td class="col-2" style=""><b>${key}</b></td><td class="col-10">${elt}</td></tr>`;
                                         }).join(' ')}
                                     </table>
                                 </div>

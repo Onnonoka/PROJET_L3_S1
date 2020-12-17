@@ -15,10 +15,6 @@ let STATE = {
             this.card.inputField = VIEW.card.inputField(MODEL);
         }
 
-        this.display();
-    },
-
-    display() {
         VIEW.display(this);
     }
 }

@@ -18,6 +18,4 @@ window.onload = () => {
     MODEL.init()
     console.log("fait", MODEL.service);
 
-    // TODO Fonction d'affichage des informations
-
 };

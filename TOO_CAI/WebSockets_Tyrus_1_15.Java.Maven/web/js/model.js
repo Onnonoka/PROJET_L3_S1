@@ -34,16 +34,44 @@ let MODEL = {
                             url: message.url
                         };
                     } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong with the server!'
+                        });
                         this.data.card.tabs = {};
                     }
                     this.hasChanged.card.tabs = true;
                     STATE.represent(this);
                     break;
                 case 'info':
-                    if (message.succeed)
+                    if (message.succeed) {
                         this.data.suffixes = message.data;
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong with the server!'
+                        });
+                    }
                     break;
             }
+        }
+        this.service.onerror = (event) => {
+            if (this.service.readyState !== 1) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'The server seems unavailable at the moment!'
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong with the server!'
+                });
+            }
+
         }
         this.hasChanged.card.inputValue = true;
         this.hasChanged.card.tabs = true;
@@ -76,9 +104,12 @@ let MODEL = {
     isValidURL() {
         if (!this.data.card.inputValue.match(/[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)?/gi))
             return false;
-        for (let elt of this.data.suffixes) {
-            if (this.data.card.inputValue.endsWith('.' + elt))
-                return true;
+        if (this.data.suffixes.length > 0) {
+            for (let elt of this.data.suffixes)
+                if (this.data.card.inputValue.endsWith('.' + elt))
+                    return true;
+        } else {
+            return true;
         }
         return false;
     }
