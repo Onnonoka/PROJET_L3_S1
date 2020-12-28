@@ -1,0 +1,134 @@
+
+--------------------------------------------------------------------Depuis JMain-------------------------------------------
+
+context Jmain def : cartePlusForte(Plis p) : Carte = p.carte -> select(c Carte | c.couleur = p.couleurDemander) -> select(c Carte | c.valeurCrate::valeurCarte() -> max())
+
+context Jmain def : atoutPlusForte(Plis p) : Carte = p.carte -> select(c Carte | c.couleur = p.Manche.couleurAtout) -> select(c Carte | c.valeurCrate::valeurCarte() -> max())
+
+context JMain::jouerCarte(Plis p, Carte c)
+pre :
+if (p.Carte -> size() = 0) then
+    self.Carte -> exists(c)
+else
+    let mainJouable = self.Carte -> select(c Carte | c.couleur = p.couleurDemander) in
+    let mainAtout = self.Carte -> select(c Carte | c.couleur = p.Manche.couleurAtout) in
+    if (mainJouable -> notEmpty()) then
+        if (mainJouable -> exists(c Carte | c.valeurCrate::valeurCarte() > cartePlusForte(p).valeurCrate::valeurCarte())) then
+            c.valeurCrate::valeurCarte() > cartePlusForte(p).valeurCrate::valeurCarte() and
+            c.couleur = p.couleurDemander and
+            mainJouable -> exists(c)
+        else
+            if (p.couleurDemander = p.Manche.couleurAtout) then
+                self.Carte -> exists(c)
+            else 
+                c.couleur = p.couleurDemander and
+                self.Carte -> exists(c)
+            endif
+        endif
+    else
+        if (p.couleurDemander = p.Manche.couleurAtout) then
+            self.Carte -> exists(c)
+        else 
+            if (mainAtout -> notEmpty()) then
+                if (p.Carte -> select(c Carte | c.couleur = p.Manche.couleurAtout) -> notEmpty()) then
+                    c.valeurCrate::valeurCarte() > atoutPlusForte(p).valeurCrate::valeurCarte() and
+                    c.couleur = p.couleurDemander and
+                    self.Carte -> exists(c)
+                else
+                    c.couleur = p.couleurDemander and
+                    self.Carte -> exists(c)
+                endif
+            else
+                self.Carte -> exists(c)
+            endif
+        endif
+    endif
+endif
+
+post :
+if (p.Carte -> size() = 0) then
+    p.couleurDemander = c.couleur@pre and
+    p.Carte = p.Carte -> append(c@pre)
+else
+    p.Carte = p.Carte -> append(c@pre)
+endif
+
+
+--------------------------------------------------------------------Pareil mais depuis plis-------------------------------------------
+
+context Plis def : cartePlusForte : Carte = self.carte -> select(c Carte | c.couleur = self.couleurDemander) -> select(c Carte | c.valeurCrate::valeurCarte -> max())
+
+context Plis def : atoutPlusForte : Carte = self.carte -> select(c Carte | c.couleur = self.Manche.couleurAtout) -> select(c Carte | c.valeurCrate::valeurCarte -> max())
+
+context Plis::jouerCarte(Carte c, Joueur j)
+pre :
+if (self.Carte -> size() = 0) then
+    j.JMain.Carte -> exists(c)
+else
+    let mainJouable = j.JMain.Carte -> select(c Carte | c.couleur = p.couleurDemander) in
+    let mainAtout = j.JMain.Carte -> select(c Carte | c.couleur = p.Manche.couleurAtout) in
+    if (mainJouable -> notEmpty()) then 
+        if (mainJouable -> exists(c Carte | c.valeurCrate::valeurCarte > cartePlusForte.valeurCrate::valeurCarte) then
+            c.valeurCrate::valeurCarte > cartePlusForte.valeurCrate::valeurCarte and
+            c.couleur = self.couleurDemander and
+            mainJouable -> exists(c)
+        else
+            if (self.couleurDemander = self.Manche.couleurAtout) then
+                j.JMain.Carte -> exists(c)
+            else 
+                c.couleur = self.couleurDemander and
+                j.JMain.Carte -> exists(c)
+            endif
+        endif
+    else
+        if (self.couleurDemander = self.Manche.couleurAtout) then
+            j.JMain.Carte -> exists(c)
+        else 
+            if (mainAtout -> notEmpty()) then
+                if (self.Carte -> select(c Carte | c.couleur = self.Manche.couleurAtout) -> notEmpty()) then
+                    c.valeurCrate::valeurCarte > atoutPlusForte.valeurCrate::valeurCarte and
+                    c.couleur = self.couleurDemander and
+                    j.JMain.Carte -> exists(c)
+                else
+                    c.couleur = self.couleurDemander and
+                    j.JMain.Carte -> exists(c)
+                endif
+            else
+                j.JMain.Carte -> exists(c)
+            endif
+        endif
+    endif
+endif
+
+post :
+if (self.Carte -> size() = 0) then
+    self.couleurDemander = c.couleur@pre and
+    self.Carte = self.Carte -> append(c@pre) and
+    self.Joueur = self.Joueur ->append(j@pre)
+else
+    self.Carte = p.Carte -> append(c@pre)
+endif
+
+
+------------------------------------------------------------------Il n'y a pas 2x le meme joueur dans une equipe-----------------------------------------------
+
+context Equipe
+inv : self.Joueur -> isUnique()
+
+
+------------------------------------------------------------------Un joueur n'es pas dans 2 equipe-------------------------------------------------------------
+
+context Partie
+inv : self.Equipe.Joueur -> isUnique()
+
+
+------------------------------------------------------------------Un joueur ne joue qu'une fois par plis-------------------------------------------------------
+
+context Plis
+inv : self.Joueur -> isUnique()
+
+
+------------------------------------------------------------------zugfhezu'gh'ze------------------------------------------------------------------------------
+
+context Plis
+inv : self.nbPoints = self.Carte.valeurCarte::valeurCarte -> sum()
